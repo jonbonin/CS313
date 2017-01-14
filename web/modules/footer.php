@@ -1,0 +1,1 @@
+<!--<a href="/?action=exercises" title='Homework that&#39;s done'>Exercises</a>--><a href="/?action=proposal" title='dynamic Proposal'>Dynamic Proposal</a><br><script src="/java_script/google-analytics.js"></script>
