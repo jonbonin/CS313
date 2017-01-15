@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name='author' content='Jon Bonin'>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="general.css"/>
+        <script src="hwSurprise.js"></script>        
+        <title>
+            Nameless Temple Homepage
+        </title>
+    </head>
+    <body>
+        <div>
+            <header role="banner">
+                <h1 class="pageTitle">Connect, Create, Collaborate Conference</h1>
+                <nav role="navigation">
+                    <div>
+                        <ul>
+                            <li><a href="home.html" Title="Home Page">Home</a></li>
+                            <li><a href="homework.html" title="All my Homework">Homework</a></li>
+                            <li><a href="describeMe.html" title="How to contact the auther">About Me</a></li>
+                        </ul>
+                    </div>
+                </nav>
+            </header>
+            <div>
+                <main role="main">
+                    <div>
+                        <h1>Can you find my homework?</h1>
+                        <input type="text" id="seeMe" value="looking for? ex. homework">
+                        <button id="shallSee" onclick="showHW()">submit</button>
+                        <br>
+                        <section id="hidden">
+                            <p id="homework hidden">Here is my homework</p>
+                        </section>
+                    </div>
+                </main>
+            </div>
+        </div>
+    </body>
+</html>

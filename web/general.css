@@ -1,0 +1,103 @@
+.pageTitle{
+    text-align: center;
+}
+
+#hidden{
+    display: none;
+}
+
+html{
+    background-color: #7FFFD4;
+}
+
+header{
+    background-color:#51ABAB;
+}
+#loginLinks{
+    position: absolute;
+    top: 50px;
+    right: 15%;
+}
+
+#seeMe, #shallSee{
+    display: block;
+    margin: auto;
+}
+
+/*#heloPerson{
+    position: absolute;
+    top: 55px;
+    right: 15%;
+}*/
+
+nav[role] div{
+    text-align: center;
+    width: 100%;
+    background-color:#F5F5DC;
+    max-width: 75%;
+    margin:0 auto;
+}
+
+nav[role] ul{
+    list-style-type: none;
+    display:block;
+}
+
+nav[role] li{
+    display: inline-table;
+    padding: 4px 4px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6{
+    text-align: center;
+}
+p, dl{
+    width: 87%;
+    margin:0 auto;
+    padding: 7px;
+    font-size: 1.08em;
+}
+
+.error{
+    color:red;
+    text-align: center;
+}
+
+#searchFill{
+    /*padding: 0;*/
+    border:0;
+}
+
+table{
+    margin: 0 auto;
+}
+
+th, td, tr{
+    margin: 3px auto;
+    border: 1px solid black;
+    padding:3px;
+}
+
+label{
+    display:inline-block;
+    width: 135px;
+    text-align:right;
+}
+input{
+    margin: 4px 0;
+}
+form{
+    margin-left: 50%;
+    transform: translateX(-50%);
+}
+
+video{
+    width: 600px;
+    margin-left: 50%;
+    transform:translateX(-50%);
+}
