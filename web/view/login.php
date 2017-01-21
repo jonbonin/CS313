@@ -25,20 +25,17 @@ if (!(isset($_SESSION))) {
                         }?>
                         <form action="index.php" method="post">
                             <label>Username:</label>
-                            <input type="email" name="email" id="email" <?php if (isset($firstName)) {echo "value='$firstName'";} ?>><br>
+                            <input type="text" name="username" id="username" <?php if (isset($username)) {echo "value='$username'";} ?>><br>
 
 <!--                            <label>Password:</label>
                             <input type="password"name="password" id="password"><br>-->
                             
-                            <label>&nbsp;</label>
+                            <label>&nbsp;&nbsp;</label>
                             <input type="submit" name="action" value="login">
                         </form>
                     </div>
                 </main>
             </div>
-            <aside role="complementary">
-                <!--This is info pertaining to the website as a whole-->
-            </aside>
             <footer role="contentinfo">
                 <div>
                     <?php include $_SERVER['DOCUMENT_ROOT'] . '/modules/footer.php'; ?>
