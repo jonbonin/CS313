@@ -20,13 +20,12 @@ if (!(isset($_SESSION))) {
                 <main role="main">
                     <div>
                         <h1>My Home Page</h1>
-                        <p>Content forthcoming</p>
+                        <p>Content forthcoming</p><br>
+                        <p>I am taking a business class right now, and I am thinking that this web site could be a site about perceptual maps. Perceptual maps are a graph like document that tells where a certain technological item lies with societies expectations are. There are two general categories: high tech or low tech items. I am not sure how I would program this, but I am thinking that I can provide the service of letting people know where an item stands on that perceptual map.</p>
+                        <p><b>Note:</b>I am currently having logout troubles. I am not sure why.</p>
                     </div>
                 </main>
             </div>
-            <aside role="complementary">
-                <!--This is info pertaining to the website as a whole-->
-            </aside>
             <footer role="contentinfo">
                 <div>
                     <?php include $_SERVER['DOCUMENT_ROOT'] . '/modules/footer.php'; ?>

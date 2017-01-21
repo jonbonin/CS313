@@ -1,6 +1,35 @@
 html{
     width: 100%;
 }
+.loginLinks{
+    position: absolute;
+    top: 50px;
+    right: 15%;
+}
+
+nav[role]{
+    text-align: center;
+}
 
 body{
+    max-width: 75%;
+    margin: 0 auto;
+}
+
+table{
+    margin: 0 auto;
+}
+
+th, td, tr{
+    margin: 3px auto;
+    border: 1px solid black;
+    padding:3px;
+}
+
+table img{
+    width: 85%;
+}
+table input{
+    width: 80px;
+    margin: 0 6px;
 }
