@@ -20,9 +20,10 @@ if (!(isset($_SESSION))) {
                 <main role="main">
                     <div>
                         <h1>My Home Page</h1>
-                        <p>Content forthcoming</p><br>
-                        <p>I am taking a business class right now, and I am thinking that this web site could be a site about perceptual maps. Perceptual maps are a graph like document that tells where a certain technological item lies with societies expectations are. There are two general categories: high tech or low tech items. I am not sure how I would program this, but I am thinking that I can provide the service of letting people know where an item stands on that perceptual map.</p>
-                        <p><b>Note:</b>I am currently having logout troubles. I am not sure why.</p>
+                        <h3>What My Sie is About</h3>
+                        <p>I am taking a business class right now, and I am going to make a web site about perceptual maps. Perceptual maps are a graph like document that tells where a certain technological item lies within the spectrum of what the customers' expectations are. Essentially what the customers want and where the products actually are, are displayed on the same graph.</p>
+                        <p>There are two general categories: high tech and low tech items. A low tech product is something that has been around for a few years, and has been proven. Like computers, they are a proven product, but the are continually getting smaller and faster. The high tech are brand new products, which are slightly experimental and bravely innovate, like the <a href="https://www.myo.com/" target="_blank">Myo</a>. Since there are two different categories, two different expectations come with those categories, and are thus two different areas on the perceptual graph are needed to accurately display the information that the perceptual map gives..</p>
+                        <p><b>Please Note:</b>I am developing a live site of the course of a few months. So if something does not work right away, please give me some time. One of the problems is that I am currently having logout troubles. Not entirely sure why at the moment. </p>
                     </div>
                 </main>
             </div>

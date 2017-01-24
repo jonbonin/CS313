@@ -69,8 +69,14 @@ switch ($action) {
         break;
 
     //dealing with the cart related things now
-    case 'buyFish':
-        
+    case 'addToCart':
+//        echo 'brownQuantity';
+        if (!isset($_SESSION["cart"])){
+        $_SESSION["cart"]=aray();
+        }
+        $_SESSION["cart"]= "brownstuff";
+        var_dump($_SESSION["cart"]);
+        include 'view/cart.php';
         break;
 
     // the default action takes you to the home page

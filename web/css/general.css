@@ -1,7 +1,13 @@
 html{
     width: 100%;
+    background-color: blue;
 }
-.loginLinks{
+
+header{
+    background-color: lightseagreen;
+}
+
+#loginLinks{
     position: absolute;
     top: 50px;
     right: 15%;
@@ -14,6 +20,8 @@ nav[role]{
 body{
     max-width: 75%;
     margin: 0 auto;
+    background-color: lightblue;
+    padding: 0 20px;
 }
 
 table{
@@ -27,7 +35,7 @@ th, td, tr{
 }
 
 table img{
-    width: 85%;
+    width: 90%;
 }
 table input{
     width: 80px;
