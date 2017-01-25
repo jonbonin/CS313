@@ -46,9 +46,9 @@ if (!(isset($_SESSION))) {
                                 </p>
                             </th>
                             <th>
-                                <form method="post" action="<?php echo htmlspecialchars("addToCart");?>">
-                                    <input type="number" name="brownQuantity">
-                                    <input type="submit" name="fish" value="Add to Cart">
+                                <form method="post" action="<?php echo htmlspecialchars("?action=addToCart");?>">
+                                    <input type="number" name="products[]" value="theTheobald">
+                                    <input type="submit" name='The Theobold' value="Add to Cart">
                                 </form>
                             </th>
                         </tr>
@@ -59,11 +59,11 @@ if (!(isset($_SESSION))) {
                             </th>
                             <th>
                                 <p>
-                                    Goodman Brown. No other explanation is needed in order to buy this guy downtown.
+                                    Goodman Brown. No other explanation is needed in order to buy this puppy downtown.
                                 </p>
                             </th>
                             <th>
-                                <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+                                <form method="post" action="<?php echo htmlspecialchars($_SERVER["?action=addToCart"]);?>">
                                     <input type="number" name="brownQuantity">
                                     <input type="submit" name="fish" value="Add to Cart">
                                 </form>

@@ -70,12 +70,15 @@ switch ($action) {
 
     //dealing with the cart related things now
     case 'addToCart':
-//        echo 'brownQuantity';
-        if (!isset($_SESSION["cart"])){
-        $_SESSION["cart"]=aray();
+        if (!isset($_SESSION["cart"])) {
+            $_SESSION["cart"] = array();
         }
-        $_SESSION["cart"]= "brownstuff";
-        var_dump($_SESSION["cart"]);
+
+        $products = $_POST["products"];
+        foreach ($products as $product) {
+            array_push($_SESSION["cart"], $product);
+        }
+
         include 'view/cart.php';
         break;
 
