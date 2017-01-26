@@ -1,3 +1,4 @@
+<!--robocopy C:\Users\Jonathan\cs313-php\web C:\Bitnami\wappstack-5.6.29-0\apache2\htdocs /mon:1 /r:200 /e-->
 <?php
 
 //if the session is not started, the following will start it
@@ -70,15 +71,14 @@ switch ($action) {
 
     //dealing with the cart related things now
     case 'addToCart':
-        if (!isset($_SESSION["cart"])) {
-            $_SESSION["cart"] = array();
-        }
-
-        $products = $_POST["products"];
-        foreach ($products as $product) {
-            array_push($_SESSION["cart"], $product);
-        }
-
+        $productName = $_POST["product"];
+        $productCount = $_POST["productCount"];
+        $_SESSION["product"] = $productName;
+        $_SESSION["productCount"] = $productCount;
+        include 'view/product.php';
+        break;
+    
+    case 'viewCart':
         include 'view/cart.php';
         break;
 

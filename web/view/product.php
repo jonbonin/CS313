@@ -20,6 +20,7 @@ if (!(isset($_SESSION))) {
                 <div>
                     <h1>Our Products</h1>
                     <h2>Fish</h2>
+                    <a href="?action=viewCart" title="View Cart"><b>View Your Cart</b></a>
                     <table>
                         <tr>
                             <th>
@@ -47,8 +48,9 @@ if (!(isset($_SESSION))) {
                             </th>
                             <th>
                                 <form method="post" action="<?php echo htmlspecialchars("?action=addToCart");?>">
-                                    <input type="number" name="products[]" value="theTheobald">
-                                    <input type="submit" name='The Theobold' value="Add to Cart">
+                                    <input type="number" min="0" name="productCount">
+                                    <input type="hidden" name="product" value="The Theobald">
+                                    <input type="submit" value="Add to Cart">
                                 </form>
                             </th>
                         </tr>
@@ -63,9 +65,10 @@ if (!(isset($_SESSION))) {
                                 </p>
                             </th>
                             <th>
-                                <form method="post" action="<?php echo htmlspecialchars($_SERVER["?action=addToCart"]);?>">
-                                    <input type="number" name="brownQuantity">
-                                    <input type="submit" name="fish" value="Add to Cart">
+                                <form method="post" action="<?php echo htmlspecialchars("?action=addToCart");?>">
+                                    <input type="number" min="0" name="productCount">
+                                    <input type="hidden" name="product" value="Goodman Brown">
+                                    <input type="submit" value="Add to Cart">
                                 </form>
                             </th>
                         </tr>
