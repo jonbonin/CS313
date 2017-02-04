@@ -2,9 +2,12 @@
 <?php
 
 //if the session is not started, the following will start it
+error_reporting(E_ALL);
 if (!(isset($_SESSION))) {
     session_start();
 }
+
+require_once 'model/database.php';
 
 //This checks the get and the post for the action
 //If there is no action, action is set to ''
@@ -21,6 +24,10 @@ if (isset($_POST['action'])) {
 switch ($action) {
     //This section deals with logging in and loggin out
 
+    case 'createLogin':
+        include 'view/create_login.php';
+        break;
+    
     case 'login':
         // for checking login credentials against database, check other index file
         $username = filter_input($INPUT_POST, 'username');

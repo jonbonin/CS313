@@ -8,7 +8,7 @@ if (!(isset($_SESSION))) {
     <head>
         <?php include $_SERVER['DOCUMENT_ROOT'] . '/modules/head.php'; ?>
         <title>
-            Page Title | cit336-food-thecollegway.com
+            Nameless Temple cart
         </title>
     </head>
     <body>

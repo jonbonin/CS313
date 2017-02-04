@@ -8,7 +8,7 @@ if (!(isset($_SESSION))) {
     <head>
         <?php include $_SERVER['DOCUMENT_ROOT'] . '/modules/head.php'; ?>
         <title>
-            Page Title | cit336-food-thecollegway.com
+            Nameless Temple Login
         </title>
     </head>
     <body>
@@ -19,8 +19,8 @@ if (!(isset($_SESSION))) {
             <div>
                 <main role="main">
                     <div>
-                        <h1>Page Heading</h1>
-                        <!--The main content of the page will go here-->
+                        <h1>CS 313 Homework</h1>
+                        <p>hurray for homework...</p>
                     </div>
                 </main>
             </div>

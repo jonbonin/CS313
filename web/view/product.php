@@ -21,7 +21,7 @@ if (!(isset($_SESSION))) {
                     <h1>Our Products</h1>
                     <h2>Fish</h2>
                     <a href="?action=viewCart" title="View Cart"><b>View Your Cart</b></a>
-                    <table>
+                    <table id="products">
                         <tr>
                             <th>
                                 Name

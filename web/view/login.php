@@ -8,7 +8,7 @@ if (!(isset($_SESSION))) {
     <head>
         <?php include $_SERVER['DOCUMENT_ROOT'] . '/modules/head.php'; ?>
         <title>
-            Login | cit336-food-thecollegway.com
+            Nameless Temple Login
         </title>
     </head>
     <body>
@@ -27,12 +27,13 @@ if (!(isset($_SESSION))) {
                             <label>Username:</label>
                             <input type="text" name="username" id="username" <?php if (isset($username)) {echo "value='$username'";} ?>><br>
 
-<!--                            <label>Password:</label>
-                            <input type="password"name="password" id="password"><br>-->
+                            <label>Password:</label>
+                            <input type="password"name="password" id="password"><br>
                             
                             <label>&nbsp;&nbsp;</label>
                             <input type="submit" name="action" value="login">
                         </form>
+                        <p>Don't have an account? Sign in <a href="?action=createLogin">here</a>.</p>
                     </div>
                 </main>
             </div>

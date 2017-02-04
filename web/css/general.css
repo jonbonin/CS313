@@ -24,20 +24,29 @@ body{
     padding: 0 20px;
 }
 
-table{
+#products{
     margin: 0 auto;
-}
-
-th, td, tr{
     margin: 3px auto;
     border: 1px solid black;
     padding:3px;
 }
 
-table img{
+#products th{
+    margin: 3px auto;
+    border: 1px solid black;
+    padding:3px;
+}
+
+#products img{
     width: 90%;
 }
-table input{
+
+#products input{
     width: 80px;
     margin: 0 6px;
+    padding: 0px;
+}
+
+.createLoginCell1{
+    text-align: left;
 }
