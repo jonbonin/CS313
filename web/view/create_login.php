@@ -72,7 +72,7 @@ if (!(isset($_SESSION))) {
                                         <label><sup>*</sup>Username:</label>
                                     </th>
                                     <th>
-                                        <input type="password" name="password" id="password" <?php
+                                        <input type="text" name="username" id="username" <?php
                                         if (isset($firstName)) {
                                             echo "value='$username'";
                                         }

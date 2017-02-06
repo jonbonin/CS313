@@ -1,13 +1,13 @@
-<!--robocopy C:\Users\Jonathan\cs313-php\web C:\Bitnami\wappstack-5.6.29-0\apache2\htdocs /mon:1 /r:200 /e-->
 <?php
 
 //if the session is not started, the following will start it
-error_reporting(E_ALL);
+//error_reporting(E_ALL);
 if (!(isset($_SESSION))) {
     session_start();
 }
 
 require_once 'model/database.php';
+require_once 'model/connect.php';
 
 //This checks the get and the post for the action
 //If there is no action, action is set to ''
@@ -22,12 +22,37 @@ if (isset($_POST['action'])) {
 }
 
 switch ($action) {
-    //This section deals with logging in and loggin out
+    //This section deals with logging in and logging out
 
     case 'createLogin':
-        include 'view/create_login.php';
+        $firstName = filter_input(INPUT_POST, 'firstName');
+        $lastName = filter_input(INPUT_POST, 'lastName');
+        $email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
+        $username = filter_input(INPUT_POST, 'username');
+        $password = filter_input(INPUT_POST, 'password');
+        $retypePassword = filter_input(INPUT_POST, 'retypePassword');
+        
+        // sets an error message if the values above ar  null or fail to validate
+        if ($firstName == NULL || $lastName == NULL || $email == NULL || $email == FALSE || $password == NULL || $retypePassword == NULL) {
+            $error_message = "The information given is incorrect or there is insuficient data. Please check or retype information and submit.";
+            include 'view/create_login.php';
+        } else if ($password != $retypePassword) {
+            $error_message = 'Passwords do not match. Retype and submit again.';
+            include 'view/create_login.php';
+        } else {
+            $hash = password_hash($password, PASSWORD_BCRYPT);
+            $check = contact_insert($firstName, $lastName, $email, $hash, $username);
+            var_dump($check);
+            if ($check == 1) {
+                $error_message = 'The creation of your login has been succesful. Congratulations ' . $firstName . '!';
+                include "view/home.php";
+            } else {
+                $error_message = "Our fault: The creation of your login credentals failed. Please try again.";
+                include "view/create_login.php";
+            }
+        }
         break;
-    
+
     case 'login':
         // for checking login credentials against database, check other index file
         $username = filter_input($INPUT_POST, 'username');
@@ -84,7 +109,7 @@ switch ($action) {
         $_SESSION["productCount"] = $productCount;
         include 'view/product.php';
         break;
-    
+
     case 'viewCart':
         include 'view/cart.php';
         break;

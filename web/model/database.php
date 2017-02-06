@@ -1,15 +1,15 @@
 <?php
 
-$dsn = 'mysql:host=localhost; dbname=bononeon_c4_society';
-$username = 'bononeon_visitor';
-$password = 'Tq2[5Ra69,$T';
-
-try {
-//    echo "trying to fix";
-    $db = new PDO($dsn, $username, $password);
-//    echo "ths the second";
-} catch (PDOException $e) {
-    $error_message = "database error. Please type in correct info again";
-//    var_dump($e);
-    exit();
+try
+{
+  $user = 'percy';
+  $password = 'w6O1FbMBdhi4nJWS2LK0';
+  $db = new PDO('pgsql:host=127.0.0.1;dbname=percmap', $user, $password);
 }
+catch (PDOException $ex)
+{
+  echo 'Error!: ' . $ex->getMessage();
+  die();
+}
+
+//w6O1FbMBdhi4nJWS2LK025
