@@ -34,3 +34,14 @@ function verifyLogin($email) {
     $statement->closeCursor();
     return $user;
 }
+
+function product_list() {
+    global $db;
+
+    $query = 'SELECT productname, width, height, depth, performance, price FROM product';
+    $statement = $db->prepare($query);
+    $statement->execute();
+    $products = $statement->fetchAll();
+    $statement->closeCursor();
+    return $products;
+}

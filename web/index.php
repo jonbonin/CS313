@@ -31,7 +31,7 @@ switch ($action) {
         $username = filter_input(INPUT_POST, 'username');
         $password = filter_input(INPUT_POST, 'password');
         $retypePassword = filter_input(INPUT_POST, 'retypePassword');
-        
+
         // sets an error message if the values above ar  null or fail to validate
         if ($firstName == NULL || $lastName == NULL || $email == NULL || $email == FALSE || $password == NULL || $retypePassword == NULL) {
             $error_message = "The information given is incorrect or there is insuficient data. Please check or retype information and submit.";
@@ -112,6 +112,12 @@ switch ($action) {
 
     case 'viewCart':
         include 'view/cart.php';
+        break;
+    
+//this is the stuff ealing with all of the graphs
+    case'myGraphs':
+        $products = product_list();
+        include'view/graph.php';
         break;
 
     // the default action takes you to the home page
