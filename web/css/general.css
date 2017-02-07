@@ -24,14 +24,23 @@ body{
     padding: 0 20px;
 }
 
-#products{
+h1{
+    text-align: center;
+}
+
+.products{
     margin: 0 auto;
     margin: 3px auto;
     border: 1px solid black;
     padding:3px;
 }
 
-#products th{
+.products th{
+    margin: 3px auto;
+    border: 1px solid black;
+    padding:3px;
+}
+.products td{
     margin: 3px auto;
     border: 1px solid black;
     padding:3px;
@@ -41,7 +50,7 @@ body{
     width: 90%;
 }
 
-#products input{
+.products input{
     width: 80px;
     margin: 0 6px;
     padding: 0px;
