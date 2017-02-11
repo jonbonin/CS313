@@ -98,7 +98,7 @@ if (!(isset($_SESSION))) {
                             </table>
 
                             <label>&nbsp;</label>
-                            <input type="submit" name="action" value="Sign Up">
+                            <input type="submit" name="action" value="createLogin">
                         </form>
                     </div>
                 </main><br>

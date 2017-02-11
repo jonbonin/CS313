@@ -33,8 +33,8 @@ switch ($action) {
         $retypePassword = filter_input(INPUT_POST, 'retypePassword');
 
         // sets an error message if the values above ar  null or fail to validate
-        if ($firstName == NULL || $lastName == NULL || $email == NULL || $email == FALSE || $password == NULL || $retypePassword == NULL) {
-            $error_message = "The information given is incorrect or there is insuficient data. Please check or retype information and submit.";
+        if ($firstName == NULL || $lastName == NULL || $email == NULL || $email == FALSE || $username = NULL || $password == NULL || $retypePassword == NULL) {
+            $error_message = "The information given is incorrect or there is insuficient data. Please check or retype information and resubmit.";
             include 'view/create_login.php';
         } else if ($password != $retypePassword) {
             $error_message = 'Passwords do not match. Retype and submit again.';
@@ -44,13 +44,17 @@ switch ($action) {
             $check = contact_insert($firstName, $lastName, $email, $hash, $username);
             var_dump($check);
             if ($check == 1) {
-                $error_message = 'The creation of your login has been succesful. Congratulations ' . $firstName . '!';
+                $error_message = 'The creation of your login has been succesful. Congratulations ' . $username . '!';
                 include "view/home.php";
             } else {
                 $error_message = "Our fault: The creation of your login credentals failed. Please try again.";
                 include "view/create_login.php";
             }
         }
+        break;
+    
+    case 'createLoginForm':
+        include "view/create_login.php";
         break;
 
     case 'login':

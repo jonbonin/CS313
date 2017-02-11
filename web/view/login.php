@@ -33,7 +33,7 @@ if (!(isset($_SESSION))) {
                             <label>&nbsp;&nbsp;</label>
                             <input type="submit" name="action" value="login">
                         </form>
-                        <p>Don't have an account? Sign in <a href="?action=createLogin">here</a>.</p>
+                        <p>Don't have an account? Create an account <a href="?action=createLoginForm">here</a>.</p>
                     </div>
                 </main>
             </div>
