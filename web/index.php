@@ -118,6 +118,10 @@ switch ($action) {
         include 'view/cart.php';
         break;
     
+    case 'shopCart':
+        include 'view/temp_shop_cart.php';
+        break;
+    
 //this is the stuff ealing with all of the graphs
     case'myGraphs':
         $products = product_list();

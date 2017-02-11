@@ -8,7 +8,7 @@ if (!(isset($_SESSION))) {
     <head>
         <?php include $_SERVER['DOCUMENT_ROOT'] . '/modules/head.php'; ?>
         <title>
-            Nameless Temple Login
+            Nameless Temple Homework
         </title>
     </head>
     <body>
@@ -21,6 +21,7 @@ if (!(isset($_SESSION))) {
                     <div>
                         <h1>CS 313 Homework</h1>
                         <p>hurray for homework...</p>
+                        <p>To see an small example of a shopping cart click <a href="?action=shopCart" title="Shopping Cart">here</a>.</p>
                     </div>
                 </main>
             </div>
