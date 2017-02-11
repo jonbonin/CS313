@@ -8,7 +8,7 @@ if (!(isset($_SESSION))) {
     <head>
         <?php include $_SERVER['DOCUMENT_ROOT'] . '/modules/head.php'; ?>
         <title>
-            Page Title | cit336-food-thecollegway.com
+            Nameless Temple
         </title>
     </head>
     <body>
@@ -24,9 +24,6 @@ if (!(isset($_SESSION))) {
                     </div>
                 </main>
             </div>
-            <aside role="complementary">
-                <!--This is info pertaining to the website as a whole-->
-            </aside>
             <footer role="contentinfo">
                 <div>
                     <?php include $_SERVER['DOCUMENT_ROOT'] . '/modules/footer.php'; ?>
