@@ -42,3 +42,27 @@ function product_list() {
     $statement->closeCursor();
     return $products;
 }
+
+function product_insert($productName, $productCategory, $width, $height, $depth, $performance, $price){
+        global $db;
+    $query = 'INSERT INTO users (productName, productCategory, width, height, depth, performance, price)
+            VALUES
+            ( :productName
+            , :productCategory
+            , :width
+            , :height
+            , :depth
+            , :performance
+            , :price)';
+    $statement = $db->prepare($query);
+    $statement->bindValue(':productName', $productName);
+    $statement->bindValue(':productCategory', $productCategory);
+    $statement->bindValue(':width', $width);
+    $statement->bindValue(':height', $height);
+    $statement->bindValue(':depth', $depth);
+    $statement->bindValue(':performance', $performance);
+    $statement->bindValue(':price', $price);
+    $check = $statement->execute();
+    $statement->closeCursor();
+    return $check;
+}

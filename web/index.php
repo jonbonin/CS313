@@ -22,7 +22,7 @@ if (isset($_POST['action'])) {
 }
 
 switch ($action) {
-    //This section deals with logging in and logging out
+    //This section deals with login, logout, and create login
 
     case 'createLogin':
         $firstName = filter_input(INPUT_POST, 'firstName');
@@ -33,7 +33,7 @@ switch ($action) {
         $retypePassword = filter_input(INPUT_POST, 'retypePassword');
 
         // sets an error message if the values above ar  null or fail to validate
-        if ($firstName == NULL || $lastName == NULL || $email == NULL || $email == FALSE || $username = NULL || $password == NULL || $retypePassword == NULL) {
+        if ($firstName == NULL || $lastName == NULL || $email == NULL || $email == FALSE || $username == NULL || $password == NULL || $retypePassword == NULL) {
             $error_message = "The information given is incorrect or there is insuficient data. Please check or retype information and resubmit.";
             include 'view/create_login.php';
         } else if ($password != $retypePassword) {
@@ -42,7 +42,6 @@ switch ($action) {
         } else {
             $hash = password_hash($password, PASSWORD_BCRYPT);
             $check = contact_insert($firstName, $lastName, $email, $hash, $username);
-            var_dump($check);
             if ($check == 1) {
                 $error_message = 'The creation of your login has been succesful. Congratulations ' . $username . '!';
                 include "view/home.php";
@@ -51,10 +50,6 @@ switch ($action) {
                 include "view/create_login.php";
             }
         }
-        break;
-    
-    case 'createLoginForm':
-        include "view/create_login.php";
         break;
 
     case 'login':
@@ -105,7 +100,11 @@ switch ($action) {
         include'view/login.php';
         break;
 
-    //dealing with the cart related things now
+    case 'createLoginForm':
+        include "view/create_login.php";
+        break;
+
+    //dealing with the cart related things
     case 'addToCart':
         $productName = $_POST["product"];
         $productCount = $_POST["productCount"];
@@ -117,19 +116,43 @@ switch ($action) {
     case 'viewCart':
         include 'view/cart.php';
         break;
-    
+
     case 'shopCart':
         include 'view/temp_shop_cart.php';
         break;
-    
+
 //this is the stuff ealing with all of the graphs
-    case'myGraphs':
+    case 'myGraphs':
         $products = product_list();
         include'view/graph.php';
         break;
+    
+    case 'productInsert':
+        $productName = filter_input(INPUT_POST, 'firstName');
+        $productCategory = filter_input(INPUT_POST, 'lastName');
+        $width = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
+        $height = filter_input(INPUT_POST, 'username');
+        $depth = filter_input(INPUT_POST, 'password');
+        $performance = filter_input(INPUT_POST, 'retypePassword');
+        $price = filter_input(INPUT_POST, 'retypePassword');
+        
+        if ($productName == NULL || $productCategory == NULL || $width == NULL || $height == NULL || $depth == NULL || $performance == NULL || $price == NULL) {
+            $error_message = "The information given is incorrect or there is insuficient data. Please check or retype information and resubmit.";
+            include 'view/product.php';
+        } else {
+            $check = product_insert($productName, $productCategory, $width, $height, $depth, $performance, $price);
+            if ($check == 1) {
+                $error_message = 'Your products have been recorded. Congratulations ' . $username . '!';
+                include "view/home.php";
+            } else {
+                $error_message = "Our fault: The recording of your products has failed. Please try again.";
+                include "view/create_login.php";
+            }
+        }
+        break;
 
     // the default action takes you to the home page
-    // default case triggeredn when action == ''
+    // default case triggered when action == ''
     default:
         include'view/home.php';
         break;
