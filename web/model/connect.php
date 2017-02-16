@@ -22,8 +22,9 @@ function contact_insert($firstName, $lastName, $email, $hash, $username) {
 
 function verifyLogin($username) {
     global $db;
-    $query = 'SELECT firstName, lastName, password, username
-              FROM users';
+    $query = 'SELECT user_id, password, username
+              FROM users
+              WHERE username = :username';
     $statement = $db->prepare($query);
     $statement->bindValue(':username', $username);
     $statement->execute();
@@ -43,9 +44,9 @@ function product_list() {
     return $products;
 }
 
-function product_insert($productName, $productCategory, $width, $height, $depth, $performance, $price){
-        global $db;
-    $query = 'INSERT INTO users (productName, productCategory, width, height, depth, performance, price)
+function product_insert($productName, $productCategory, $width, $height, $depth, $performance, $price, $user_id) {
+    global $db;
+    $query = 'INSERT INTO product (productname, productcategory, width, height, depth, performance, price, user_id)
             VALUES
             ( :productName
             , :productCategory
@@ -53,16 +54,18 @@ function product_insert($productName, $productCategory, $width, $height, $depth,
             , :height
             , :depth
             , :performance
-            , :price)';
-    $statement = $db->prepare($query);
-    $statement->bindValue(':productName', $productName);
-    $statement->bindValue(':productCategory', $productCategory);
-    $statement->bindValue(':width', $width);
-    $statement->bindValue(':height', $height);
-    $statement->bindValue(':depth', $depth);
-    $statement->bindValue(':performance', $performance);
-    $statement->bindValue(':price', $price);
-    $check = $statement->execute();
-    $statement->closeCursor();
-    return $check;
+            , :price
+            , :user_id)';
+        $statement = $db->prepare($query);
+        $statement->bindValue(':productName', $productName);
+        $statement->bindValue(':productCategory', $productCategory);
+        $statement->bindValue(':width', $width);
+        $statement->bindValue(':height', $height);
+        $statement->bindValue(':depth', $depth);
+        $statement->bindValue(':performance', $performance);
+        $statement->bindValue(':price', $price);
+        $statement->bindValue(':user_id', $user_id);
+        $check = $statement->execute();
+        $statement->closeCursor();
+        return $check;
 }

@@ -25,15 +25,15 @@ switch ($action) {
     //This section deals with login, logout, and create login
 
     case 'createLogin':
-        $firstName = filter_input(INPUT_POST, 'firstName');
-        $lastName = filter_input(INPUT_POST, 'lastName');
+        $firstName = filter_input(INPUT_POST, 'firstName', FILTER_SANITIZE_STRING);
+        $lastName = filter_input(INPUT_POST, 'lastName', FILTER_SANITIZE_STRING);
         $email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
-        $username = filter_input(INPUT_POST, 'username');
+        $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING);
         $password = filter_input(INPUT_POST, 'password');
         $retypePassword = filter_input(INPUT_POST, 'retypePassword');
 
         // sets an error message if the values above ar  null or fail to validate
-        if ($firstName == NULL || $lastName == NULL || $email == NULL || $email == FALSE || $username == NULL || $password == NULL || $retypePassword == NULL) {
+        if (empty($firstName) || empty($lastName) || empty($email) || empty($email) || empty($username) || empty($password) || empty($retypePassword)) {
             $error_message = "The information given is incorrect or there is insuficient data. Please check or retype information and resubmit.";
             include 'view/create_login.php';
         } else if ($password != $retypePassword) {
@@ -54,18 +54,14 @@ switch ($action) {
 
     case 'login':
         // for checking login credentials against database, check other index file
-        $username = filter_input($INPUT_POST, 'username');
+        $username = filter_input($INPUT_POST, 'username', FILTER_SANITIZE_STRING);
+        $password = filter_input(INPUT_POST, 'password');
 
-        if ((isset($username))) {
-            $_SESSION['username'] = $username;
-        } else {
-            $error_message = 'Please check your credentials, and try again.';
-            include "view/login.php";
-        }
-
-        if ($_SESSION['username'] != NULL) {
+        $user = verifyLogin($username);
+        if (password_verify($password, $user['password'])) {
             $_SESSION['login'] = TRUE;
-            $_SESSION['username'] = $username;
+            $_SESSION['username'] = $user['username'];
+            $_SESSION['user_id'] = $user['user_id'];
             include "view/home.php";
         } else {
             $error_message = 'Please check your credentials, and try again.';
@@ -75,7 +71,7 @@ switch ($action) {
 
     case 'logout':
         $_SESSION = [];
-        session_reset();
+        session_unset();
         //second option to logout- keeps the placeholders with nothing really in them
         //third option to logout- removes session placeholders within the cookie, leaves cookie id intact using unset (session...)
         include 'view/home.php';
@@ -123,30 +119,33 @@ switch ($action) {
 
 //this is the stuff ealing with all of the graphs
     case 'myGraphs':
+        $volume = array();
+        $_SESSION['volume'] = $volume;
         $products = product_list();
         include'view/graph.php';
         break;
     
     case 'productInsert':
-        $productName = filter_input(INPUT_POST, 'firstName');
-        $productCategory = filter_input(INPUT_POST, 'lastName');
-        $width = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
-        $height = filter_input(INPUT_POST, 'username');
-        $depth = filter_input(INPUT_POST, 'password');
-        $performance = filter_input(INPUT_POST, 'retypePassword');
-        $price = filter_input(INPUT_POST, 'retypePassword');
+        $productName = filter_input(INPUT_POST, 'productName', FILTER_SANITIZE_STRING);
+        $productCategory = filter_input(INPUT_POST, 'productCategory', FILTER_SANITIZE_STRING);
+        $width = filter_input(INPUT_POST, 'width', FILTER_VALIDATE_FLOAT);
+        $height = filter_input(INPUT_POST, 'height', FILTER_VALIDATE_FLOAT);
+        $depth = filter_input(INPUT_POST, 'depth', FILTER_VALIDATE_FLOAT);
+        $performance = filter_input(INPUT_POST, 'performance', FILTER_VALIDATE_FLOAT);
+        $price = filter_input(INPUT_POST, 'price', FILTER_VALIDATE_FLOAT);
+        $user_id = $_SESSION['user_id'];
         
-        if ($productName == NULL || $productCategory == NULL || $width == NULL || $height == NULL || $depth == NULL || $performance == NULL || $price == NULL) {
+        if (empty($productName) || empty($productCategory) || empty($width) || empty($height) || empty($depth) || empty($performance) || empty($price)) {
             $error_message = "The information given is incorrect or there is insuficient data. Please check or retype information and resubmit.";
             include 'view/product.php';
         } else {
-            $check = product_insert($productName, $productCategory, $width, $height, $depth, $performance, $price);
+            $check = product_insert($productName, $productCategory, $width, $height, $depth, $performance, $price, $user_id);
             if ($check == 1) {
                 $error_message = 'Your products have been recorded. Congratulations ' . $username . '!';
-                include "view/home.php";
+                include "view/graph.php";
             } else {
                 $error_message = "Our fault: The recording of your products has failed. Please try again.";
-                include "view/create_login.php";
+                include "view/product.php";
             }
         }
         break;

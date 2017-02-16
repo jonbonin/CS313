@@ -36,7 +36,7 @@ if (!(isset($_SESSION))) {
                                         <label><sup>*</sup>First Name:</label>
                                     </th>
                                     <th>
-                                        <input type="text" name="firstName" id="firstName" <?php
+                                        <input type="text" name="firstName" id="firstName" placeholder="John" <?php
                                         if (isset($firstName)) {
                                             echo "value='$firstName'";
                                         }
@@ -48,7 +48,7 @@ if (!(isset($_SESSION))) {
                                         <label><sup>*</sup>Last Name:</label>
                                     </th>
                                     <th>
-                                        <input type="text" name="lastName" id="lastName" <?php
+                                        <input type="text" name="lastName" id="lastName" placeholder="Smith" <?php
                                         if (isset($firstName)) {
                                             echo "value='$lastName'";
                                         }
@@ -60,7 +60,7 @@ if (!(isset($_SESSION))) {
                                         <label><sup>*</sup>Email:</label>
                                     </th>
                                     <th>
-                                        <input type="email" name="email" id="email" <?php
+                                        <input type="email" name="email" id="email" placeholder="JSmith@gmail.com" <?php
                                         if (isset($firstName)) {
                                             echo "value='$email'";
                                         }
@@ -72,7 +72,7 @@ if (!(isset($_SESSION))) {
                                         <label><sup>*</sup>Username:</label>
                                     </th>
                                     <th>
-                                        <input type="text" name="username" id="username" <?php
+                                        <input type="text" name="username" id="username" placeholder="JSmithy"<?php
                                         if (isset($firstName)) {
                                             echo "value='$username'";
                                         }
@@ -96,7 +96,6 @@ if (!(isset($_SESSION))) {
                                     </th>
                                 <tr>
                             </table>
-
                             <label>&nbsp;</label>
                             <input type="submit" name="action" value="createLogin">
                         </form>
