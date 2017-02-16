@@ -109,10 +109,10 @@ if (!(isset($_SESSION))) {
                                     </th>
                                     <th>
                                         <input type="number" min="0" step="any"  name="price" placeholder="419.99" id="price" <?php
-                                        if (isset($price)) {
-                                            echo "value='$price'";
-                                        }
-                                        ?> required>
+                                               if (isset($price)) {
+                                                   echo "value='$price'";
+                                               }
+                                               ?> required>
                                     </th>
                                 <tr>
                             </table>

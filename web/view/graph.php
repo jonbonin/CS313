@@ -35,13 +35,9 @@ if (!(isset($_SESSION))) {
                                 <th>Price</th>
                             </tr>
                             
-                            <?php $volume = array(); ?>
                             <?php foreach ($products as $product) : ?>
                                 <?php $math = ($product['depth'] * $product['height'] * $product['width']) / 3; ?>
                                 <tr>
-                                    <?php
-                                    array_push($volume, round($math, 2));
-                                    ?>
                                     <td><?php echo $product['productname'] ?></td>
                                     <td><?php echo $product['productcategory'] ?></td>
                                     <td><?php echo $product['width'] ?></td>
