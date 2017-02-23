@@ -1,1 +1,1 @@
-<script src="/java_script/google-analytics.js"></script>
+<!--<script src="/java_script/google-analytics.js"></script>-->
