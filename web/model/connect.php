@@ -33,11 +33,14 @@ function verifyLogin($username) {
     return $user;
 }
 
-function product_list() {
+function product_list($user_id) {
     global $db;
 
-    $query = 'SELECT productname, productcategory, width, height, depth, performance, price FROM product';
+    $query = 'SELECT productname, productcategory, width, height, depth, performance, price
+            FROM product
+            WHERE user_id = :user_id';
     $statement = $db->prepare($query);
+    $statement->bindValue(':user_id', $user_id);
     $statement->execute();
     $products = $statement->fetchAll();
     $statement->closeCursor();

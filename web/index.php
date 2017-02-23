@@ -121,10 +121,12 @@ switch ($action) {
     case 'myGraphs':
         $volume = array();
         $_SESSION['volume'] = $volume;
-        $products = product_list();
+
+        $user_id = $_SESSION['user_id'];
+        $products = product_list($user_id);
         include'view/graph.php';
         break;
-    
+
     case 'productInsert':
         $productName = filter_input(INPUT_POST, 'productName', FILTER_SANITIZE_STRING);
         $productCategory = filter_input(INPUT_POST, 'productCategory', FILTER_SANITIZE_STRING);
@@ -134,10 +136,14 @@ switch ($action) {
         $performance = filter_input(INPUT_POST, 'performance', FILTER_VALIDATE_FLOAT);
         $price = filter_input(INPUT_POST, 'price', FILTER_VALIDATE_FLOAT);
         $user_id = $_SESSION['user_id'];
-        
+
+        $check = product_list($_SESSION['user_id']);
+
         if (empty($productName) || empty($productCategory) || empty($width) || empty($height) || empty($depth) || empty($performance) || empty($price)) {
             $error_message = "The information given is incorrect or there is insuficient data. Please check or retype information and resubmit.";
             include 'view/product.php';
+        } else if ($productName == $check['productname'] && $productCategory == $check['productcategory'] && $width == $check['width'] && $depth){
+            
         } else {
             $check = product_insert($productName, $productCategory, $width, $height, $depth, $performance, $price, $user_id);
             if ($check == 1) {
