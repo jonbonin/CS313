@@ -8,7 +8,7 @@ if (!(isset($_SESSION))) {
     <head>
         <?php include $_SERVER['DOCUMENT_ROOT'] . '/modules/head.php'; ?>
         <title>
-            Page Title | cit336-food-thecollegway.com
+            Products | Nameless Temple
         </title>
     </head>
     <body>
@@ -20,6 +20,11 @@ if (!(isset($_SESSION))) {
                 <main role="main">
                     <div>
                         <h1>All of Your Products Lay Here</h1>
+                        <?php
+                        if ($_SESSION['login'] !== 'true'){
+                            $error_message = 'You are not logged in. You will not be able to see the graph tied with your products.';
+                        }
+                        ?>
                         <?php
                         if (isset($error_message)) {
                             echo "<p class = 'error'>" . $error_message . "</p>";
@@ -116,10 +121,13 @@ if (!(isset($_SESSION))) {
                                     </th>
                                 <tr>
                             </table>
-
+                            <input type="hidden" name="action" value="productInsert">
                             <label>&nbsp;</label>
-                            <input type="submit" name="action" value="productInsert">
+                            <input type="submit" value="Insert Your Product">
                         </form>
+                        <p><b>Product Name:</b> Here you want to input the name of your product. If you are looking at Amazon, this will be the title of the page. This might be something like PlayStation 3 or Xbox 360.</p>
+                        <p><b>Product Category:</b> This is the general category of the product what it is you are showing in your graph. This helps to narrow that is being show to you on the graph page. Here you would input  something like "gaming console", to follow the previous example.</p>
+                        <p><b>Performance:</b> This is a rating of the particular product. Amazon can give an average rating of customer reviews, and as such this number will be input here. This will typically be below ten. For the sake of comparing products, choose one system and stick with it throughout your graphing experience.</p>
                     </div>
                 </main>
             </div>

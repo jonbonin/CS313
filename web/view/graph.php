@@ -14,35 +14,35 @@ if (!(isset($_SESSION))) {
         <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
         <script type="text/javascript" src="/java/bubble.js"></script>
         <script>
-            var c = 1;
-            var r = 0;
-            var table = [];
-            
-            var i = 0;
             function tablePop() {
-                while (document.getElementById(c).textContent != null) {
-                    
-                    if (table[r] == null || table[r] == undefined){
-                        table[r]=[i];
+                var c = "1";
+                var r = 0;
+                var table = [];
+                console.log("first", table);
+                var i = 0;
+                while (document.getElementById(c) != null) {
+                    console.log("c is " + c);
+                    console.log(document.getElementById(c));
+                    if (table[r] == null || table[r] == undefined) {
+                        table[r] = [i];
                     }
-                    table[r][i] = document.getElementById(c).textContent;
+                    console.log("numb 2" + document.getElementById(c));
+                    table[r][i] = document.getElementById(c).innerHTML;
+                    console.log("gerge" + document.getElementById(c));
                     i++;
                     if (i == 3) {
                         r++;
                         i = 0;
                     }
 //                    console.log(document.getElementById(c).textContent);
+                    c *= 1;
                     c++;
-                    
+                    c = c + "";
+
                 }
+                console.log("Hey" + table);
+                bubbleChart(table);
             }
-            console.log("Hey", table);
-            bubbleChart(table);
-            var obj = {
-              volume: 123.45,
-              perform: "asdf"
-            };
-            obj["volume"]
         </script>
     </head>
     <body onload="tablePop()">

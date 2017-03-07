@@ -20,9 +20,11 @@ if (!(isset($_SESSION))) {
                 <main role="main">
                     <div>
                         <h1>My Home Page</h1>
-                        <?php if (isset($error_message)) {
-                            echo $error_message;
-                        }?>
+                        <?php
+                        if (isset($error_message)) {
+                            echo "<p class = 'error'>" . $error_message . "</p>";
+                        }
+                        ?>
                         
                         <h3>What My Site is About</h3>
                         <p>I am taking a business class right now, and I am going to make a web site about perceptual maps. Perceptual maps are a graph like document that tells where a certain technological item lies within the spectrum of what the customers' expectations are. Essentially what the customers want and where the products actually are, are displayed on the same graph.</p>
