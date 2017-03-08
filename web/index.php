@@ -44,7 +44,7 @@ switch ($action) {
             $check = contact_insert($firstName, $lastName, $email, $hash, $username);
             if ($check == 1) {
                 $error_message = 'The creation of your login has been succesful. Congratulations ' . $username . '!';
-                include "view/home.php";
+                include "view/login.php";
             } else {
                 $error_message = "Our fault: The creation of your login credentals failed. Please try again.";
                 include "view/create_login.php";
@@ -148,7 +148,7 @@ switch ($action) {
             $check = product_insert($productName, $productCategory, $width, $height, $depth, $performance, $price, $user_id);
             if ($check == 1) {
                 $error_message = 'Your products have been recorded. Congratulations ' . $username . '!';
-                include "view/graph.php";
+                header('location: /view/graph.php');
             } else {
                 $error_message = "Our fault: The recording of your products has failed. Please try again.";
                 include "view/product.php";

@@ -1,4 +1,5 @@
             function bubbleChart(table) {
+                console.log(table.length);
                 var trace1 = {
                     x: getArrayValue(table, 'x'),
                     y: getArrayValue(table, 'y'),
@@ -11,18 +12,19 @@
                 var data = [trace1];
 
                 var layout = {
-                    title: 'Marker Size',
+                    title: 'Product Size',
                     showlegend: false,
-                    height: 600,
-                    width: 600
+                    height: 700,
+                    width: 700
                 };
 
                 Plotly.newPlot('myDiv', data, layout);
             }
             
             function getArrayValue(table, coord) {
-                var table2 = table;
-                console.log(table2.length);
+//                var table2 = table;
+                console.log(table.length);
+                console.log(table);
                 var i;
                 var r = 0;
                 var item = [];
@@ -34,10 +36,17 @@
                     i = 0;
                 }
                 console.log(table.length);
-                do{
+                console.log(table);
+                console.log("bdo of i " + i);
+                console.log("bdo of r " + r);
+                
+                for(var r = 0; r < table.length; r++){
+                console.log("indo of i " + i);
+                console.log("indo of r " + r);
+                console.log("indo table " + table);
                     item[r] = table[r][i];
-                    r++;
-                }while (table[r][i] !== null && table[r][i] !== undefined)
+                console.log("indo item " + item);
+                }
+                    
                 return item;
-
             }
