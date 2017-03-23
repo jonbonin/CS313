@@ -9,7 +9,7 @@ if (!(isset($_SESSION))) {
     <head>
         <?php include $_SERVER['DOCUMENT_ROOT'] . '/modules/head.php'; ?>
         <title>
-            Nameless Temple Graphs
+            Graphs | Nameless Temple 
         </title>
         <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
         <script type="text/javascript" src="/java/bubble.js"></script>
@@ -65,6 +65,7 @@ if (!(isset($_SESSION))) {
                                 <th>Volume</th>
                                 <th>Performance</th>
                                 <th>Price</th>
+                                <th>&#160;</th>
                             </tr>
                             <?php
                             $i = 1;
@@ -82,7 +83,14 @@ if (!(isset($_SESSION))) {
                                     <td <?php echo "id='$i'" ?>><?php echo round($math, 2) ?></td>
                                     <td <?php echo "id='$j'" ?>><?php echo $product['performance'] ?></td>
                                     <td <?php echo "id='$k'" ?>><?php echo $product['price'] ?></td>
-                                </tr>
+                                    <td>
+                                        <form action = '../index.php' method='post'>
+                                                <input type='hidden' name='action' value='viewUpdate'>
+                                                <input type='hidden' name='product_id' value='<?php echo $product['product_id']?>'>
+                                                <input type='submit' value='Update'>
+                                        </form>
+                                    </td>
+                                </tr>                               
                                 <?php
                                 $i+=3;
                                 $j+=3;

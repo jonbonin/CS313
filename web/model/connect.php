@@ -36,7 +36,7 @@ function verifyLogin($username) {
 function product_list($user_id) {
     global $db;
 
-    $query = 'SELECT productname, productcategory, width, height, depth, performance, price
+    $query = 'SELECT product_id, productname, productcategory, width, height, depth, performance, price
             FROM product
             WHERE user_id = :user_id';
     $statement = $db->prepare($query);
@@ -45,6 +45,52 @@ function product_list($user_id) {
     $products = $statement->fetchAll();
     $statement->closeCursor();
     return $products;
+}
+
+//The following deals with updating a product
+function select_update($product_id, $user_id) {
+    global $db;
+
+    $query = 'SELECT productname, productcategory, width, height, depth, performance, price
+            FROM product
+            WHERE user_id = :user_id
+            AND product_id = :product_id';
+    $statement = $db->prepare($query);
+    $statement->bindValue(':product_id', $product_id);
+    $statement->bindValue(':user_id', $user_id);
+    $statement->execute();
+    $products = $statement->fetchAll();
+    $statement->closeCursor();
+    return $products;
+}
+function update_list($product_id, $user_id, $productName, $productCategory, $width, $height, $depth, $performance, $price){
+        global $db;
+
+    $query = 'UPDATE product SET 
+        productname = :productname 
+        , width = :width
+	, height = :height
+	, depth = :depth
+	, performance = :performance
+	, price = :price
+	, productcategory = :productcategory
+    WHERE product_id = :product_id
+    AND user_id = :user_id;';
+    
+    $statement = $db->prepare($query);
+    $statement->bindValue(':product_id', $product_id);
+    $statement->bindValue(':user_id', $user_id);
+    $statement->bindValue(':productname', $productName);
+    $statement->bindValue(':productcategory', $productCategory);
+    $statement->bindValue(':width', $width);
+    $statement->bindValue(':height', $height);
+    $statement->bindValue(':depth', $depth);
+    $statement->bindValue(':performance', $performance);
+    $statement->bindValue(':price', $price);
+    $check = $statement->execute();
+    $statement->closeCursor();
+    
+    return $check;
 }
 
 function product_insert($productName, $productCategory, $width, $height, $depth, $performance, $price, $user_id) {

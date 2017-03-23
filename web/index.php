@@ -100,7 +100,7 @@ switch ($action) {
         include "view/create_login.php";
         break;
 
-    //dealing with the cart related things
+    //dealing with the cart related things (homework)
     case 'addToCart':
         $productName = $_POST["product"];
         $productCount = $_POST["productCount"];
@@ -116,8 +116,42 @@ switch ($action) {
     case 'shopCart':
         include 'view/temp_shop_cart.php';
         break;
+//the following deals with updating products
+    case'viewUpdate':
+        $product_id = $_POST['product_id'];
+        $user_id = $_SESSION['user_id'];
+        $products = select_update($product_id, $user_id);
+        include 'view/viewUpdate.php';
+        break;
 
-//this is the stuff ealing with all of the graphs
+    case'productUpdate':
+        $productName = filter_input(INPUT_POST, 'productName', FILTER_SANITIZE_STRING);
+        $productCategory = filter_input(INPUT_POST, 'productCategory', FILTER_SANITIZE_STRING);
+        $width = filter_input(INPUT_POST, 'width', FILTER_VALIDATE_FLOAT);
+        $height = filter_input(INPUT_POST, 'height', FILTER_VALIDATE_FLOAT);
+        $depth = filter_input(INPUT_POST, 'depth', FILTER_VALIDATE_FLOAT);
+        $performance = filter_input(INPUT_POST, 'performance', FILTER_VALIDATE_FLOAT);
+        $price = filter_input(INPUT_POST, 'price', FILTER_VALIDATE_FLOAT);
+        $user_id = $_SESSION['user_id'];
+        $product_id = filter_input($INPUT_POST, 'product_id');
+
+        if (empty($productName) || empty($productCategory) || empty($width) || empty($height) || empty($depth) || empty($performance) || empty($price)) {
+            $error_message = "The information given is incorrect or there is insuficient data. Please check or retype information and resubmit.";
+            include 'view/viewUpdate.php';
+        }
+        
+        $check = update_list($product_id, $user_id, $productName, $productCategory, $width, $height, $depth, $performance, $price);
+        if ($check == true) {
+            $error_message = 'Your updates have been recorded. Congratulations ' . $username . '!';
+            header('location: /view/graph.php');
+        } else {
+            $error_message = "Our fault: The recording of your products has failed. Please try again.";
+            include "view/viewUpdate.php";
+        }
+
+        break;
+
+//this is the stuff dealing with all of the graphs
     case 'myGraphs':
         $volume = array();
         $_SESSION['volume'] = $volume;
@@ -142,7 +176,7 @@ switch ($action) {
         if (empty($productName) || empty($productCategory) || empty($width) || empty($height) || empty($depth) || empty($performance) || empty($price)) {
             $error_message = "The information given is incorrect or there is insuficient data. Please check or retype information and resubmit.";
             include 'view/product.php';
-        } else if ($productName == $check['productname'] && $productCategory == $check['productcategory'] && $width == $check['width'] && $depth){
+        } else if ($productName == $check['productname'] && $productCategory == $check['productcategory'] && $width == $check['width'] && $depth) {
             
         } else {
             $check = product_insert($productName, $productCategory, $width, $height, $depth, $performance, $price, $user_id);
